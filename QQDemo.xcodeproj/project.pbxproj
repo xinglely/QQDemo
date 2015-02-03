@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84587D901A81068A00AACB80 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84587D8F1A81068A00AACB80 /* CFNetwork.framework */; };
+		84587D921A81069E00AACB80 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84587D911A81069E00AACB80 /* libsqlite3.dylib */; };
+		84587D9A1A8109E700AACB80 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 84587D961A8109E700AACB80 /* AsyncSocket.m */; };
+		84587D9B1A8109E700AACB80 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 84587D961A8109E700AACB80 /* AsyncSocket.m */; };
+		84587D9C1A8109E700AACB80 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 84587D981A8109E700AACB80 /* AsyncUdpSocket.m */; };
+		84587D9D1A8109E700AACB80 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 84587D981A8109E700AACB80 /* AsyncUdpSocket.m */; };
+		84587D9E1A8109E700AACB80 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 84587D991A8109E700AACB80 /* Documentation.html */; };
+		84587D9F1A8109E700AACB80 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 84587D991A8109E700AACB80 /* Documentation.html */; };
 		84B366E21A7E2FD100715F35 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B366E01A7E2FD100715F35 /* more.png */; };
 		84B366E31A7E2FD100715F35 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B366E01A7E2FD100715F35 /* more.png */; };
 		84B366E41A7E2FD100715F35 /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B366E11A7E2FD100715F35 /* more@2x.png */; };
@@ -59,6 +67,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84587D8F1A81068A00AACB80 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		84587D911A81069E00AACB80 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		84587D951A8109E700AACB80 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		84587D961A8109E700AACB80 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		84587D971A8109E700AACB80 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
+		84587D981A8109E700AACB80 /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
+		84587D991A8109E700AACB80 /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
 		84B366E01A7E2FD100715F35 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
 		84B366E11A7E2FD100715F35 /* more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more@2x.png"; sourceTree = "<group>"; };
 		9B4C96731A7BA4500048A02E /* ShareFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareFunc.h; sourceTree = "<group>"; };
@@ -102,6 +117,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84587D921A81069E00AACB80 /* libsqlite3.dylib in Frameworks */,
+				84587D901A81068A00AACB80 /* CFNetwork.framework in Frameworks */,
 				9BECBA5D1A7B8B1200AD3190 /* CoreGraphics.framework in Frameworks */,
 				9BECBA5F1A7B8B1200AD3190 /* UIKit.framework in Frameworks */,
 				9BECBA5B1A7B8B1200AD3190 /* Foundation.framework in Frameworks */,
@@ -121,6 +138,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84587D931A8109E700AACB80 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				84587D941A8109E700AACB80 /* AsyncSocket */,
+			);
+			path = Vendor;
+			sourceTree = SOURCE_ROOT;
+		};
+		84587D941A8109E700AACB80 /* AsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				84587D951A8109E700AACB80 /* AsyncSocket.h */,
+				84587D961A8109E700AACB80 /* AsyncSocket.m */,
+				84587D971A8109E700AACB80 /* AsyncUdpSocket.h */,
+				84587D981A8109E700AACB80 /* AsyncUdpSocket.m */,
+				84587D991A8109E700AACB80 /* Documentation.html */,
+			);
+			path = AsyncSocket;
+			sourceTree = "<group>";
+		};
 		9B4C96721A7BA4100048A02E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +237,8 @@
 		9BECBA591A7B8B1200AD3190 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84587D911A81069E00AACB80 /* libsqlite3.dylib */,
+				84587D8F1A81068A00AACB80 /* CFNetwork.framework */,
 				9BECBA5A1A7B8B1200AD3190 /* Foundation.framework */,
 				9BECBA5C1A7B8B1200AD3190 /* CoreGraphics.framework */,
 				9BECBA5E1A7B8B1200AD3190 /* UIKit.framework */,
@@ -211,6 +250,7 @@
 		9BECBA601A7B8B1200AD3190 /* QQDemo */ = {
 			isa = PBXGroup;
 			children = (
+				84587D931A8109E700AACB80 /* Vendor */,
 				9B4C96861A7BEEF20048A02E /* Resources */,
 				9B4C96721A7BA4100048A02E /* Classes */,
 				9BECBA691A7B8B1200AD3190 /* AppDelegate.h */,
@@ -329,6 +369,7 @@
 			files = (
 				9B4C96911A7BEEF20048A02E /* riven.png in Resources */,
 				9B4C96931A7BEEF20048A02E /* splash.png in Resources */,
+				84587D9E1A8109E700AACB80 /* Documentation.html in Resources */,
 				84B366E21A7E2FD100715F35 /* more.png in Resources */,
 				9B4C968D1A7BEEF20048A02E /* icon.png in Resources */,
 				9BECBA731A7B8B1200AD3190 /* Images.xcassets in Resources */,
@@ -348,6 +389,7 @@
 				9B4C96961A7BEEF20048A02E /* splash@2x.png in Resources */,
 				9B4C968E1A7BEEF20048A02E /* icon.png in Resources */,
 				84B366E51A7E2FD100715F35 /* more@2x.png in Resources */,
+				84587D9F1A8109E700AACB80 /* Documentation.html in Resources */,
 				9BECBA841A7B8B1200AD3190 /* InfoPlist.strings in Resources */,
 				9B4C96901A7BEEF20048A02E /* icon@2x.png in Resources */,
 				84B366E31A7E2FD100715F35 /* more.png in Resources */,
@@ -363,8 +405,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B4C96A81A7BF7430048A02E /* UIButtonEx.m in Sources */,
+				84587D9C1A8109E700AACB80 /* AsyncUdpSocket.m in Sources */,
 				9B4C96791A7BA8B00048A02E /* Log.m in Sources */,
 				9B4C96A41A7BF7200048A02E /* UIRegister.m in Sources */,
+				84587D9A1A8109E700AACB80 /* AsyncSocket.m in Sources */,
 				9B4C96751A7BA4500048A02E /* ShareFunc.m in Sources */,
 				9B4C96A01A7BF5E80048A02E /* UILogin.m in Sources */,
 				9BECBA6B1A7B8B1200AD3190 /* AppDelegate.m in Sources */,
@@ -380,10 +424,12 @@
 				9B4C96A51A7BF7200048A02E /* UIRegister.m in Sources */,
 				9B4C967A1A7BA8B00048A02E /* Log.m in Sources */,
 				9B4C96A11A7BF5E80048A02E /* UILogin.m in Sources */,
+				84587D9D1A8109E700AACB80 /* AsyncUdpSocket.m in Sources */,
 				9BECBA861A7B8B1200AD3190 /* QQDemoTests.m in Sources */,
 				9B4C96A91A7BF7430048A02E /* UIButtonEx.m in Sources */,
 				9B4C96761A7BA4500048A02E /* ShareFunc.m in Sources */,
 				9B4C969C1A7BF3760048A02E /* UIImageViewEx.m in Sources */,
+				84587D9B1A8109E700AACB80 /* AsyncSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
