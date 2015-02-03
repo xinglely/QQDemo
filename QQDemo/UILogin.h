@@ -7,15 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AsyncSocket.h"
+
 
 @interface UILogin : UIViewController<UITextFieldDelegate,UIScrollViewDelegate>
 {
     float  _DropGroupHeight;
-    AsyncSocket *socket;
 }
--(int)connected:(NSString*)ip port:(int)port;
--(void)Recv:(NSString*)msg;
 
 //有@property这样才能用self引用
 @property (retain,nonatomic)IBOutlet UIButton* DropButton;
@@ -30,6 +27,6 @@
 @property (retain,nonatomic)IBOutlet UIView* Bottom;
 @property (retain,nonatomic)IBOutlet UIScrollView* Accounts;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *passwdGroup_top;
-@property (retain,nonatomic)IBOutlet AsyncSocket *socket;
+
 
 @end

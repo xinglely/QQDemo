@@ -66,14 +66,25 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0A-e6-hOL" userLabel="PasswdGroup" customClass="UIImageView">
-                                <rect key="frame" x="0.0" y="203" width="600" height="40"/>
+                                <rect key="frame" x="0.0" y="203" width="600" height="100"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xvo-78-8k2" userLabel="bg">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
                                         <color key="backgroundColor" red="0.99001781710000003" green="0.95370640090000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="zc3-ef-HQ0"/>
+                                        </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="216-6F-mUS" customClass="UIButtonEx">
-                                        <rect key="frame" x="16" y="0.0" width="568" height="40"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="密码" textAlignment="center" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mAh-d9-RC3" userLabel="input">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="join" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="iHa-SY-YsA" id="GP3-qJ-2Zc"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="216-6F-mUS" customClass="UIButtonEx">
+                                        <rect key="frame" x="16" y="50" width="568" height="40"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ac2-n3-hWK"/>
@@ -88,30 +99,20 @@
                                             <action selector="onLogin:" destination="iHa-SY-YsA" eventType="touchUpInside" id="4qu-0z-Xko"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="密码" textAlignment="center" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mAh-d9-RC3" userLabel="input">
-                                        <rect key="frame" x="10" y="0.0" width="580" height="40"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="join" secureTextEntry="YES"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="iHa-SY-YsA" id="GP3-qJ-2Zc"/>
-                                        </connections>
-                                    </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration" label=""/>
                                 <constraints>
                                     <constraint firstItem="xvo-78-8k2" firstAttribute="top" secondItem="d0A-e6-hOL" secondAttribute="top" id="2Mc-hZ-Yf2" userLabel="bg-top"/>
-                                    <constraint firstItem="216-6F-mUS" firstAttribute="top" secondItem="d0A-e6-hOL" secondAttribute="bottom" constant="10" id="BbV-NU-g7m" userLabel="Login-top"/>
-                                    <constraint firstItem="mAh-d9-RC3" firstAttribute="leading" secondItem="d0A-e6-hOL" secondAttribute="leading" constant="10" id="EjO-if-0Jt" userLabel="input-left"/>
-                                    <constraint firstItem="mAh-d9-RC3" firstAttribute="top" secondItem="d0A-e6-hOL" secondAttribute="top" id="Guc-UE-igs" userLabel="input-top"/>
-                                    <constraint firstAttribute="trailing" secondItem="mAh-d9-RC3" secondAttribute="trailing" constant="10" id="HPh-fL-98l" userLabel="input-right"/>
+                                    <constraint firstItem="xvo-78-8k2" firstAttribute="bottom" secondItem="216-6F-mUS" secondAttribute="top" constant="-10" id="KBg-4d-zQj" userLabel="login-top"/>
                                     <constraint firstAttribute="trailing" secondItem="216-6F-mUS" secondAttribute="trailing" constant="16" id="Nc7-l3-Hde" userLabel="Login-right"/>
+                                    <constraint firstItem="xvo-78-8k2" firstAttribute="leading" secondItem="mAh-d9-RC3" secondAttribute="leading" id="VVk-Ce-y66" userLabel="input-left"/>
                                     <constraint firstItem="216-6F-mUS" firstAttribute="leading" secondItem="d0A-e6-hOL" secondAttribute="leading" constant="16" id="WBG-QY-DKL" userLabel="Login-left"/>
+                                    <constraint firstItem="xvo-78-8k2" firstAttribute="top" secondItem="mAh-d9-RC3" secondAttribute="top" id="YNA-LA-tk6" userLabel="input-top"/>
                                     <constraint firstAttribute="trailing" secondItem="xvo-78-8k2" secondAttribute="trailing" id="YOA-uI-sfF" userLabel="bg-right"/>
                                     <constraint firstItem="xvo-78-8k2" firstAttribute="leading" secondItem="d0A-e6-hOL" secondAttribute="leading" id="YWh-0o-TQ5" userLabel="bg-left"/>
-                                    <constraint firstAttribute="bottom" secondItem="xvo-78-8k2" secondAttribute="bottom" id="YwA-tO-Fus" userLabel="bg-bottom"/>
-                                    <constraint firstAttribute="height" constant="40" id="adQ-wC-kcS" userLabel="PasswdGroup-height"/>
-                                    <constraint firstAttribute="bottom" secondItem="mAh-d9-RC3" secondAttribute="bottom" id="e2K-it-r5S" userLabel="input-bottom"/>
+                                    <constraint firstAttribute="height" constant="100" id="adQ-wC-kcS" userLabel="PasswdGroup-height"/>
+                                    <constraint firstItem="xvo-78-8k2" firstAttribute="trailing" secondItem="mAh-d9-RC3" secondAttribute="trailing" id="dP0-bP-kD7" userLabel="input-right"/>
+                                    <constraint firstItem="xvo-78-8k2" firstAttribute="bottom" secondItem="mAh-d9-RC3" secondAttribute="bottom" id="o4U-Y2-DIj" userLabel="input-bottom"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDD-Sm-tWA" userLabel="DropGroup">
