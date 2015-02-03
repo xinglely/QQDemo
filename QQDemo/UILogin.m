@@ -25,6 +25,7 @@
 @synthesize PasswdGroup;
 @synthesize DropGroup,ForgetButton,RegisterButton,Bottom,Accounts;
 @synthesize passwdGroup_top;
+@synthesize socket;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,6 +43,8 @@
     
     [DropGroup.layer setAnchorPoint:CGPointMake(0.5f, 0.0f)];
     _DropGroupHeight=DropGroup.frame.size.height-1;
+    
+    [self connected:@"127.0.0.1" port:8888];
 
 }
 
@@ -192,4 +195,56 @@
     }
     
 }
+
+-(int)connected:(NSString*)ip port:(int)port
+{
+    socket=[[AsyncSocket alloc] initWithDelegate:self];
+    NSError *err=nil;
+    if([socket connectToHost:ip onPort:port error:&err]==NO)
+    {
+        NSLog(@"连接失败%d %@",[err code],[err localizedDescription]);
+        return -1;
+    }else
+    {
+        NSLog(@"连接成功");
+        return 0;
+    }
+    return 0;
+}
+
+-(void)Recv:(NSString*)msg
+{
+    NSLog(@"显示信息%@",msg);
+}
+
+#pragma mark socket delegate
+
+- (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port{
+    [socket readDataWithTimeout:-1 tag:0];
+}
+
+- (void)onSocket:(AsyncSocket *)sock willDisconnectWithError:(NSError *)err
+{
+    NSLog(@"Error");
+}
+
+- (void)onSocketDidDisconnect:(AsyncSocket *)sock
+{
+    NSString *msg = @"Sorry this connect is failure";
+    [self Recv:msg];
+    socket = nil;
+}
+
+- (void)onSocketDidSecure:(AsyncSocket *)sock{
+    
+}
+
+- (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
+    
+    NSString* aStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"Hava received datas is :%@",aStr);
+    [self Recv:aStr];
+    [socket readDataWithTimeout:-1 tag:0];
+}
+
 @end
