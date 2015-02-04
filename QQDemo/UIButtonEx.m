@@ -11,6 +11,8 @@
 
 @implementation UIButtonEx
 
+//我们如果用Interface Builder 方式创建了UIView对象。（也就是，用拖控件的方式）那么，initWithFrame方法方法是不会被调用的
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -30,7 +32,7 @@
 */
 
 
-
+//initWithCoder是一个类在IB中创建但在xocdde中被实例化时被调用的
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self=[super initWithCoder:aDecoder];
     if (self) {

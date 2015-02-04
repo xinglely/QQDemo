@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		843772E71A823551007D63D7 /* UISideslipViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843772E61A823551007D63D7 /* UISideslipViewViewController.m */; };
 		84587D901A81068A00AACB80 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84587D8F1A81068A00AACB80 /* CFNetwork.framework */; };
 		84587D921A81069E00AACB80 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84587D911A81069E00AACB80 /* libsqlite3.dylib */; };
 		84587D9A1A8109E700AACB80 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 84587D961A8109E700AACB80 /* AsyncSocket.m */; };
@@ -69,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		843772E51A823551007D63D7 /* UISideslipViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISideslipViewViewController.h; sourceTree = "<group>"; };
+		843772E61A823551007D63D7 /* UISideslipViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISideslipViewViewController.m; sourceTree = "<group>"; };
 		84587D8F1A81068A00AACB80 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		84587D911A81069E00AACB80 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		84587D951A8109E700AACB80 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 				9B4C969A1A7BF3760048A02E /* UIImageViewEx.m */,
 				9B4C96A61A7BF7430048A02E /* UIButtonEx.h */,
 				9B4C96A71A7BF7430048A02E /* UIButtonEx.m */,
+				843772E51A823551007D63D7 /* UISideslipViewViewController.h */,
+				843772E61A823551007D63D7 /* UISideslipViewViewController.m */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 			files = (
 				9B4C96A81A7BF7430048A02E /* UIButtonEx.m in Sources */,
 				84587DAB1A811D7A00AACB80 /* SocketHelper.m in Sources */,
+				843772E71A823551007D63D7 /* UISideslipViewViewController.m in Sources */,
 				84587D9C1A8109E700AACB80 /* AsyncUdpSocket.m in Sources */,
 				9B4C96791A7BA8B00048A02E /* Log.m in Sources */,
 				9B4C96A41A7BF7200048A02E /* UIRegister.m in Sources */,

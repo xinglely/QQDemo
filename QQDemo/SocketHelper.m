@@ -98,7 +98,7 @@ static SocketHelper* g_socket=nil;
 }
 
 - (void)onSocket:(AsyncSocket *)sock didWriteDataWithTag:(long)tag{
-    NSLog(@"thread(%),onSocket:%p didWriteDataWithTag:%ld",[[NSThread currentThread] name],
+    NSLog(@"thread(%@),onSocket:%p didWriteDataWithTag:%ld",[[NSThread currentThread] name],
           socket,tag);
 }
 
