@@ -91,6 +91,7 @@
 -(IBAction)onLogin:(id)sender
 {
     [self Login];
+    [self performSegueWithIdentifier:@"login-segue" sender:self];
 }
 
 -(void)Login
