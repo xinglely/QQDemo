@@ -12,7 +12,7 @@
 {
     @private
     UIViewController *leftVC;
-    UIViewController *mainVC;
+    UINavigationController *mainVC;
     UIViewController *rightVC;
     CGFloat scale;
     CGFloat width;
@@ -42,9 +42,9 @@
 @property (assign,nonatomic) CGFloat scale;//缩放系数
 @property (strong)UITapGestureRecognizer *tapGR;//轻按手势
 @property (retain,nonatomic) UIViewController *leftVC;
-@property (retain,nonatomic) UIViewController *mainVC;
+@property (retain,nonatomic) UINavigationController *mainVC;
 @property (retain,nonatomic) UIViewController *rightVC;
--(void)initWithLeftView:(UIViewController*) left mainView:(UIViewController*) main rightView:(UIViewController*)right;
+-(void)initWithLeftView:(UIViewController*) left mainView:(UINavigationController*) main rightView:(UIViewController*)right;
 
 -(void)ShowMainView;
 -(void)ShowLeftView;

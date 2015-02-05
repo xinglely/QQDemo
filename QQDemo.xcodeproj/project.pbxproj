@@ -18,6 +18,8 @@
 		84587D9F1A8109E700AACB80 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 84587D991A8109E700AACB80 /* Documentation.html */; };
 		84587DAB1A811D7A00AACB80 /* SocketHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84587DAA1A811D7A00AACB80 /* SocketHelper.m */; };
 		84587DAC1A811D7A00AACB80 /* SocketHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84587DAA1A811D7A00AACB80 /* SocketHelper.m */; };
+		84AFCA9D1A83947500B4603B /* UIMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCA9C1A83947500B4603B /* UIMainViewController.m */; };
+		84AFCA9E1A83947500B4603B /* UIMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCA9C1A83947500B4603B /* UIMainViewController.m */; };
 		84B366E21A7E2FD100715F35 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B366E01A7E2FD100715F35 /* more.png */; };
 		84B366E31A7E2FD100715F35 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B366E01A7E2FD100715F35 /* more.png */; };
 		84B366E41A7E2FD100715F35 /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B366E11A7E2FD100715F35 /* more@2x.png */; };
@@ -81,6 +83,8 @@
 		84587D991A8109E700AACB80 /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
 		84587DA91A811D7A00AACB80 /* SocketHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketHelper.h; sourceTree = "<group>"; };
 		84587DAA1A811D7A00AACB80 /* SocketHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketHelper.m; sourceTree = "<group>"; };
+		84AFCA9B1A83947500B4603B /* UIMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMainViewController.h; sourceTree = "<group>"; };
+		84AFCA9C1A83947500B4603B /* UIMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMainViewController.m; sourceTree = "<group>"; };
 		84B366E01A7E2FD100715F35 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
 		84B366E11A7E2FD100715F35 /* more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more@2x.png"; sourceTree = "<group>"; };
 		9B4C96731A7BA4500048A02E /* ShareFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareFunc.h; sourceTree = "<group>"; };
@@ -165,9 +169,19 @@
 			path = AsyncSocket;
 			sourceTree = "<group>";
 		};
+		84AFCA991A838DE600B4603B /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				84AFCA9B1A83947500B4603B /* UIMainViewController.h */,
+				84AFCA9C1A83947500B4603B /* UIMainViewController.m */,
+			);
+			name = MainView;
+			sourceTree = "<group>";
+		};
 		9B4C96721A7BA4100048A02E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				84AFCA991A838DE600B4603B /* MainView */,
 				9B4C969D1A7BF5A40048A02E /* Login */,
 				9B4C96981A7BF31D0048A02E /* Extension */,
 				9B4C96731A7BA4500048A02E /* ShareFunc.h */,
@@ -419,6 +433,7 @@
 				84587DAB1A811D7A00AACB80 /* SocketHelper.m in Sources */,
 				843772E71A823551007D63D7 /* UISideslipViewViewController.m in Sources */,
 				84587D9C1A8109E700AACB80 /* AsyncUdpSocket.m in Sources */,
+				84AFCA9D1A83947500B4603B /* UIMainViewController.m in Sources */,
 				9B4C96791A7BA8B00048A02E /* Log.m in Sources */,
 				9B4C96A41A7BF7200048A02E /* UIRegister.m in Sources */,
 				84587D9A1A8109E700AACB80 /* AsyncSocket.m in Sources */,
@@ -435,6 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B4C96A51A7BF7200048A02E /* UIRegister.m in Sources */,
+				84AFCA9E1A83947500B4603B /* UIMainViewController.m in Sources */,
 				9B4C967A1A7BA8B00048A02E /* Log.m in Sources */,
 				84587DAC1A811D7A00AACB80 /* SocketHelper.m in Sources */,
 				9B4C96A11A7BF5E80048A02E /* UILogin.m in Sources */,

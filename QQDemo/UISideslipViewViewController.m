@@ -22,8 +22,26 @@
     
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     [self initWithLeftView:[sb instantiateViewControllerWithIdentifier:@"leftVC"]
-                  mainView:[sb instantiateViewControllerWithIdentifier:@"mainVC"]
+                  mainView:[sb instantiateViewControllerWithIdentifier:@"mainNav"]
                  rightView:[sb instantiateViewControllerWithIdentifier:@"rightVC"]];
+    
+    /*
+    UIViewController *vc=[[UIViewController alloc] init];
+    vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    * /
+    UIViewController* nav=[sb instantiateViewControllerWithIdentifier:@"mainNav"];
+    CGRect frame = self.view.bounds;
+    frame.origin.x = 100;
+    nav.view.frame = frame;
+    
+    [self.view addSubview:nav.view];
+    */
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,9 +59,9 @@
 }
 */
 
--(void)initWithLeftView:(UIViewController*) left mainView:(UIViewController*) main rightView:(UIViewController*)right
+-(void)initWithLeftView:(UIViewController*) left mainView:(UINavigationController*) main rightView:(UIViewController*)right
 {
-    leftSpace=240;
+    leftSpace=200;
     rightSpace=80;
     self.scale = 0.0f;
     self.leftVC=left;
@@ -65,6 +83,9 @@
     [self.view addSubview:left.view];
     [self.view addSubview:right.view];
     [self.view addSubview:main.view];
+    [self addChildViewController:mainVC];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:self action:nil];
 }
 
 #pragma mark -
@@ -111,7 +132,7 @@
     //修正手势结束后位置
     if(pan.state == UIGestureRecognizerStateEnded)
     {
-        if(pos.x>=width)
+        if(pos.x>=width/2+150)
         {
             [self ShowLeftView];
         }else if(pos.x< width/2-rightSpace/2)
@@ -142,6 +163,7 @@
 -(void)ShowMainView
 {
     [UIView beginAnimations:nil context:nil];
+    
     mainVC.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,1.0,1.0);
     mainVC.view.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2,[UIScreen mainScreen].bounds.size.height/2);
     [UIView setAnimationDelegate:self];
@@ -150,8 +172,10 @@
 }
 -(void)ShowLeftView
 {
+    scale = 1-(mainVC.view.frame.origin.x/leftSpace)*(1-SCALE);
+    
     [UIView beginAnimations:nil context:nil];
-    mainVC.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,SCALE,SCALE);
+    mainVC.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,scale,scale);
     mainVC.view.center = CGPointMake(width/2+leftSpace,[UIScreen mainScreen].bounds.size.height/2);
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(AnimationFinish)];
@@ -159,8 +183,10 @@
 }
 -(void)ShowRight
 {
+    scale = 1-(mainVC.view.frame.origin.x/-rightSpace)*(1-SCALE);
+    
     [UIView beginAnimations:nil context:nil];
-    mainVC.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,SCALE,SCALE);
+    mainVC.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,scale,scale);
     mainVC.view.center = CGPointMake(width/2-rightSpace,[UIScreen mainScreen].bounds.size.height/2);
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(AnimationFinish)];

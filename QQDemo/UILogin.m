@@ -48,6 +48,11 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];//隐藏导航栏
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -136,9 +141,11 @@
     [move setFromValue:[NSValue valueWithCGPoint:CGPointMake(pos.x, pos.y)]];
     if(!isSelected){//show
         pos.y+=_DropGroupHeight;
+        passwdGroup_top.constant-=_DropGroupHeight;
         [move setValue:[NSNumber numberWithBool:NO] forKey:@"hide"];
     }else{//hide
         pos.y-=_DropGroupHeight;
+        passwdGroup_top.constant+=_DropGroupHeight;
         [move setValue:[NSNumber numberWithBool:YES] forKey:@"hide"];
     }
     [move setToValue:[NSValue valueWithCGPoint:CGPointMake(pos.x, pos.y)]];
@@ -193,12 +200,6 @@
     
     NSValue *value=[anim valueForKey:@"position"];
     PasswdGroup.center=[value CGPointValue];
-    
-    if(hide){
-        passwdGroup_top.constant+=_DropGroupHeight;
-    }else{
-        passwdGroup_top.constant-=_DropGroupHeight;
-    }
     
 }
 
