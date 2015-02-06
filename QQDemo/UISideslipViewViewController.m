@@ -76,7 +76,7 @@
     //轻按手势添加到mainVC
     self.tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onHandleTap:)];
     [self.tapGR setNumberOfTapsRequired:1];
-    [self.mainVC.view addGestureRecognizer:tapGR];
+    //[self.mainVC.view addGestureRecognizer:tapGR];
     
     left.view.hidden = YES;
     right.view.hidden = YES;
@@ -92,7 +92,7 @@
 #pragma mark 滑动手势回调
 -(void) onHandlePan:(UIPanGestureRecognizer*)pan
 {
-    
+    [self.mainVC.view addGestureRecognizer:tapGR];
     CGPoint point = [pan translationInView:self.view];//获取平移手势对象在self.view的位置点
     
     CGPoint pos=pan.view.center;
@@ -156,6 +156,7 @@
         CGSize size=[[UIScreen mainScreen] bounds].size;
         tap.view.center = CGPointMake(size.width/2, size.height/2);
         [UIView commitAnimations];
+        [self.mainVC.view removeGestureRecognizer:tapGR];
     }
 }
 
@@ -169,6 +170,7 @@
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(AnimationFinish)];
     [UIView commitAnimations];
+    [self.mainVC.view removeGestureRecognizer:tapGR];
 }
 -(void)ShowLeftView
 {

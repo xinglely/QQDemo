@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0dA-je-8ri">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wep-qQ-1Px">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -22,10 +22,10 @@
                                 <color key="backgroundColor" red="0.015551851826565599" green="0.82483712852171998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="riven.png" translatesAutoresizingMaskIntoConstraints="NO" id="Oo2-IV-B0J" userLabel="Head" customClass="UIImageViewEx">
-                                <rect key="frame" x="260" y="72" width="80" height="80"/>
+                                <rect key="frame" x="260" y="116" width="80" height="80"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kno-83-6Oz" userLabel="NameGroup" customClass="UIImageView">
-                                <rect key="frame" x="0.0" y="162" width="600" height="40"/>
+                                <rect key="frame" x="0.0" y="206" width="600" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="INa-CG-fTb" userLabel="bg">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
@@ -66,7 +66,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0A-e6-hOL" userLabel="PasswdGroup" customClass="UIImageView">
-                                <rect key="frame" x="0.0" y="203" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="247" width="600" height="100"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xvo-78-8k2" userLabel="bg">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
@@ -116,7 +116,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDD-Sm-tWA" userLabel="DropGroup">
-                                <rect key="frame" x="0.0" y="152" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="196" width="600" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="lHb-mo-1EP"/>
@@ -227,7 +227,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="消息" id="PIj-Gb-HMS"/>
+                    <tabBarItem key="tabBarItem" title="消息" image="tab_recent_nor.png" selectedImage="tab_recent_press.png" id="PIj-Gb-HMS" userLabel="消息"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zuU-xI-mLL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -236,7 +236,7 @@
         <!--Contacts Item-->
         <scene sceneID="GgV-Xa-lTB">
             <objects>
-                <viewController id="QGx-wT-F1e" userLabel="Contacts Item" sceneMemberID="viewController">
+                <viewController id="QGx-wT-F1e" userLabel="Contacts Item" customClass="UIContactsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PQQ-ai-cFs"/>
                         <viewControllerLayoutGuide type="bottom" id="zku-30-Q6S"/>
@@ -244,9 +244,24 @@
                     <view key="view" contentMode="scaleToFill" id="DLj-ws-Md3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="XAf-qc-K2v">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="XAf-qc-K2v" secondAttribute="trailing" id="63i-cu-cWu" userLabel="table-right"/>
+                            <constraint firstItem="XAf-qc-K2v" firstAttribute="top" secondItem="DLj-ws-Md3" secondAttribute="top" id="KSM-fz-sLy" userLabel="table-top"/>
+                            <constraint firstItem="zku-30-Q6S" firstAttribute="top" secondItem="XAf-qc-K2v" secondAttribute="bottom" id="Q3b-3n-oe2" userLabel="table-bottom"/>
+                            <constraint firstItem="XAf-qc-K2v" firstAttribute="leading" secondItem="DLj-ws-Md3" secondAttribute="leading" id="ScF-6V-Lp4" userLabel="table-left"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="联系人" image="icon.png" id="2Og-fE-WhV"/>
+                    <tabBarItem key="tabBarItem" title="联系人" image="tab_buddy_nor.png" selectedImage="tab_buddy_press.png" id="2Og-fE-WhV"/>
+                    <connections>
+                        <outlet property="table" destination="XAf-qc-K2v" id="Eye-7m-hjU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yjx-Wo-O11" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -265,7 +280,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="动态" id="sId-jR-OTO"/>
+                    <tabBarItem key="tabBarItem" title="动态" image="tab_qworld_nor.png" selectedImage="tab_qworld_press.png" id="sId-jR-OTO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WfQ-xf-egb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -274,13 +289,13 @@
         <!--Home Tab-->
         <scene sceneID="gbd-K5-7BY">
             <objects>
-                <tabBarController title="Home Tab" id="Gi3-WI-b4s" sceneMemberID="viewController">
+                <tabBarController title="Home Tab" id="Gi3-WI-b4s" customClass="UIHomeTab" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="imb-OT-xy6"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="dGo-25-L3f">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="ftl-iT-71a" kind="relationship" relationship="viewControllers" id="ban-j6-Oyi"/>
@@ -331,8 +346,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon.png" width="58" height="58"/>
         <image name="more.png" width="15" height="9"/>
         <image name="riven.png" width="80" height="80"/>
+        <image name="tab_buddy_nor.png" width="30" height="30"/>
+        <image name="tab_buddy_press.png" width="30" height="30"/>
+        <image name="tab_qworld_nor.png" width="30" height="30"/>
+        <image name="tab_qworld_press.png" width="30" height="30"/>
+        <image name="tab_recent_nor.png" width="30" height="30"/>
+        <image name="tab_recent_press.png" width="30" height="30"/>
     </resources>
 </document>
