@@ -43,6 +43,7 @@ typedef enum{
 	UILabel *_statusLabel;
 	CALayer *_arrowImage;
 	UIActivityIndicatorView *_activityView;
+    CGFloat height;
 	
 
 }
@@ -51,6 +52,7 @@ typedef enum{
 - (void)egoRefreshScrollViewDidEndDragging:(UIScrollView *)scrollView;
 - (void)egoRefreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView;
 
+@property (assign,nonatomic)CGFloat height;
 @property(nonatomic,assign) id <EGORefreshTableHeaderDelegate> delegate;
 @property(nonatomic,retain) UILabel *lastUpdatedLabel;
 

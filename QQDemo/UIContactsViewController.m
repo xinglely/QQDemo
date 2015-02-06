@@ -36,6 +36,9 @@
     if (_refreshHeaderView == nil) {
         
         EGORefreshTableHeaderView *ego = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.table.bounds.size.height, self.view.frame.size.width, self.table.bounds.size.height)];
+        ego.height=self.navigationController.navigationBar.frame.size.height+
+            [[UIApplication sharedApplication] statusBarFrame].size.height;
+        NSLog(@"%f",ego.height);
         self.refreshHeaderView=ego;
         self.refreshHeaderView.delegate = self;
         [self.table addSubview:ego];
@@ -141,7 +144,7 @@
 
 //视图滚动
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@"%f %f",self.table.frame.origin.x,self.table.frame.origin.y);
+    //NSLog(@"%f %f",self.table.frame.origin.x,self.table.frame.origin.y);
     [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
     
 }

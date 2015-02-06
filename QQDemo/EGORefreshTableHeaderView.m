@@ -15,7 +15,7 @@
 
 @synthesize delegate=_delegate;
 @synthesize lastUpdatedLabel=_lastUpdatedLabel;
-
+@synthesize height;
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -111,7 +111,7 @@
     //respondsToSelector是实例方法也是类方法，用于判断某个类/实例是否能处理某个方法（包括基类方法）
     //判断delegate是否实现了方法egoRefreshTableHeaderDataSourceLastUpdated
 	if ([_delegate respondsToSelector:@selector(egoRefreshTableHeaderDataSourceLastUpdated:)]) {
-		NSLog(@"delegate实现方法egoRefreshTableHeaderDataSourceLastUpdated");
+		//NSLog(@"delegate实现方法egoRefreshTableHeaderDataSourceLastUpdated");
         
 		NSDate *date = [_delegate egoRefreshTableHeaderDataSourceLastUpdated:self];
 		
@@ -124,7 +124,7 @@
 		[[NSUserDefaults standardUserDefaults] synchronize];
 		
 	} else {
-        NSLog(@"delegate没有实现方法egoRefreshTableHeaderDataSourceLastUpdated");
+        //NSLog(@"delegate没有实现方法egoRefreshTableHeaderDataSourceLastUpdated");
 		_lastUpdatedLabel.text = nil;
 		
 	}
@@ -135,16 +135,17 @@
 - (void)setState:(EGOPullRefreshState)aState{
 	
 	switch (aState) {
-		case EGOOPullRefreshPulling:
+		case EGOOPullRefreshPulling://释放刷新
 			
-			_statusLabel.text = NSLocalizedString(@"Release to refresh...", @"Release to refresh status");
+			_statusLabel.text = NSLocalizedString(@"释放刷新...", @"释放刷新状态");
 			[CATransaction begin];
 			[CATransaction setAnimationDuration:FLIP_ANIMATION_DURATION];
+            //自旋转180度
 			_arrowImage.transform = CATransform3DMakeRotation((M_PI / 180.0) * 180.0f, 0.0f, 0.0f, 1.0f);
 			[CATransaction commit];
 			
 			break;
-		case EGOOPullRefreshNormal:
+		case EGOOPullRefreshNormal://正常状态
 			
 			if (_state == EGOOPullRefreshPulling) {
 				[CATransaction begin];
@@ -153,7 +154,7 @@
 				[CATransaction commit];
 			}
 			
-			_statusLabel.text = NSLocalizedString(@"Pull down to refresh...", @"Pull down to refresh status");
+			_statusLabel.text = NSLocalizedString(@"下拉刷新...", @"下拉刷新状态");
 			[_activityView stopAnimating];
 			[CATransaction begin];
 			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions]; 
@@ -164,9 +165,9 @@
 			[self refreshLastUpdatedDate];
 			
 			break;
-		case EGOOPullRefreshLoading:
+		case EGOOPullRefreshLoading://刷新中
 			
-			_statusLabel.text = NSLocalizedString(@"Loading...", @"Loading Status");
+			_statusLabel.text = NSLocalizedString(@"加载中...", @"加载状态");
 			[_activityView startAnimating];
 			[CATransaction begin];
 			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions]; 
@@ -187,10 +188,10 @@
 
 - (void)egoRefreshScrollViewDidScroll:(UIScrollView *)scrollView {	
 	
-	if (_state == EGOOPullRefreshLoading) {
+	if (_state == EGOOPullRefreshLoading) {//显示刷新状态
 		
 		CGFloat offset = MAX(scrollView.contentOffset.y * -1, 0);
-		offset = MIN(offset, 60);
+		offset = MIN(offset, height+80);
 		scrollView.contentInset = UIEdgeInsetsMake(offset, 0.0f, 0.0f, 0.0f);
 		
 	} else if (scrollView.isDragging) {
@@ -200,14 +201,18 @@
 			_loading = [_delegate egoRefreshTableHeaderDataSourceIsLoading:self];
 		}
 		
-		if (_state == EGOOPullRefreshPulling && scrollView.contentOffset.y > -65.0f && scrollView.contentOffset.y < 0.0f && !_loading) {
-			[self setState:EGOOPullRefreshNormal];
-		} else if (_state == EGOOPullRefreshNormal && scrollView.contentOffset.y < -65.0f && !_loading) {
-			[self setState:EGOOPullRefreshPulling];
+		if (_state == EGOOPullRefreshPulling && scrollView.contentOffset.y > -(self.height+80) && !_loading) {
+            
+			[self setState:EGOOPullRefreshNormal];//状态正常
+            
+		} else if (_state == EGOOPullRefreshNormal && scrollView.contentOffset.y < -(self.height+80) && !_loading) {
+            
+			[self setState:EGOOPullRefreshPulling];//状态转为松开刷新
 		}
 		
 		if (scrollView.contentInset.top != 0) {
-			scrollView.contentInset = UIEdgeInsetsZero;
+            
+			scrollView.contentInset = UIEdgeInsetsMake(self.height, 0.0f, 0.0f, 0.0f);//显示内容坐标
 		}
 		
 	}
@@ -223,7 +228,7 @@
 		_loading = [_delegate egoRefreshTableHeaderDataSourceIsLoading:self];
 	}
 	
-	if (scrollView.contentOffset.y <= - 65.0f && !_loading) {
+	if (_state== EGOOPullRefreshPulling&& !_loading) {
 		
 		if ([_delegate respondsToSelector:@selector(egoRefreshTableHeaderDidTriggerRefresh:)]) {
 			[_delegate egoRefreshTableHeaderDidTriggerRefresh:self];
@@ -232,7 +237,7 @@
 		[self setState:EGOOPullRefreshLoading];
 		[UIView beginAnimations:nil context:NULL];
 		[UIView setAnimationDuration:0.2];
-		scrollView.contentInset = UIEdgeInsetsMake(60.0f, 0.0f, 0.0f, 0.0f);
+		scrollView.contentInset = UIEdgeInsetsMake(160.0f, 0.0f, 0.0f, 0.0f);
 		[UIView commitAnimations];
 		
 	}
@@ -243,7 +248,7 @@
 	
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:.3];
-	[scrollView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f)];
+	[scrollView setContentInset:UIEdgeInsetsMake(self.height, 0.0f, 0.0f, 0.0f)];
 	[UIView commitAnimations];
 	
 	[self setState:EGOOPullRefreshNormal];
@@ -274,7 +279,7 @@
                           options:0
                           metrics:nil
                           views:NSDictionaryOfVariableBindings(view)]];
-    /*
+    / *
      |: 表示父视图
      -:表示距离
      V:  :表示垂直
@@ -297,7 +302,7 @@
      10:  [wideView(>=60@700)]  :视图的宽度为至少为60 不能超过  700
      11: 如果没有声明方向默认为  水平  V:
      */
-    NSLog(@"jj");
+    
     [self addConstraint:[NSLayoutConstraint
                          constraintWithItem:view
                          attribute:NSLayoutAttributeCenterX
