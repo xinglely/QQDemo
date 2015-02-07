@@ -248,6 +248,24 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="XAf-qc-K2v">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="61j-5e-9pQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="QGx-wT-F1e" id="r7O-3i-nOu"/>
+                                    </connections>
+                                </searchBar>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="toolbar" id="FKE-js-CuZ">
+                                        <rect key="frame" x="0.0" y="278" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FKE-js-CuZ" id="MX5-rj-cBx">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="0.039240699890000001" blue="0.034789882959999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -260,10 +278,29 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="联系人" image="tab_buddy_nor.png" selectedImage="tab_buddy_press.png" id="2Og-fE-WhV"/>
                     <connections>
+                        <outlet property="searchBar" destination="61j-5e-9pQ" id="tg8-gb-hCP"/>
+                        <outlet property="searchDisplayController" destination="pKu-u5-72b" id="SAc-Iu-3Pp"/>
                         <outlet property="table" destination="XAf-qc-K2v" id="Eye-7m-hjU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yjx-Wo-O11" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="QeM-Kd-Y1u">
+                    <connections>
+                        <outlet property="delegate" destination="QGx-wT-F1e" id="hKo-ku-R5I"/>
+                        <outlet property="searchContentsController" destination="QGx-wT-F1e" id="G4B-Nv-FHu"/>
+                        <outlet property="searchResultsDataSource" destination="QGx-wT-F1e" id="3V8-Uo-vr6"/>
+                        <outlet property="searchResultsDelegate" destination="QGx-wT-F1e" id="o8y-UV-fcM"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="pKu-u5-72b">
+                    <connections>
+                        <outlet property="delegate" destination="QGx-wT-F1e" id="tMu-ba-ua5"/>
+                        <outlet property="searchBar" destination="61j-5e-9pQ" id="Xwm-wh-ueN"/>
+                        <outlet property="searchContentsController" destination="QGx-wT-F1e" id="TJf-wE-kY6"/>
+                        <outlet property="searchResultsDataSource" destination="QGx-wT-F1e" id="e2q-GY-LSC"/>
+                        <outlet property="searchResultsDelegate" destination="QGx-wT-F1e" id="NdN-aR-KB7"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1294" y="3004"/>
         </scene>
@@ -334,6 +371,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0094830355030000001" green="0.45557457979999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.0094830355030000001" green="0.45557457979999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

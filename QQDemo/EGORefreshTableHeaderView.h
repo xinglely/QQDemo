@@ -51,6 +51,7 @@ typedef enum{
 - (void)egoRefreshScrollViewDidScroll:(UIScrollView *)scrollView;
 - (void)egoRefreshScrollViewDidEndDragging:(UIScrollView *)scrollView;
 - (void)egoRefreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView;
+- (void)Hide:(BOOL)hide;
 
 @property (assign,nonatomic)CGFloat height;
 @property(nonatomic,assign) id <EGORefreshTableHeaderDelegate> delegate;

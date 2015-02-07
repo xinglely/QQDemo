@@ -312,4 +312,9 @@
                          multiplier:1.0f
                          constant:0]];
 }
+
+- (void)Hide:(BOOL)hide
+{
+    self.hidden=hide;
+}
 @end

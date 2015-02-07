@@ -16,10 +16,36 @@
 @implementation UIContactsViewController
 
 @synthesize table;
+@synthesize searchBar=_searchBar;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //[self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:20/255.0 green:155/255.0 blue:213/255.0 alpha:1.0]];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil]];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 , 100, 44)];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.font = [UIFont systemFontOfSize:15];
+    titleLabel.textColor = [UIColor darkGrayColor];//设置文本颜色
+    titleLabel.textAlignment = UITextAlignmentCenter;
+    titleLabel.text = @"Settings";
+    self.navigationItem.titleView = titleLabel;
+    [self.navigationItem setTitle:@"联系人"];
+    [self.navigationController setTitle:@"ff"];
+    //add right button
+    UIBarButtonItem * rightButton = [[UIBarButtonItem alloc]
+                                     initWithTitle:@"回到首页"
+                                     style:UIBarButtonItemStyleBordered
+                                     target:self
+                                     action:@selector(ShowRightView)];
+    
+    //rightButton.image=[UIImage imageNamed:@"right_button.png"];
+    rightButton.tintColor=[UIColor whiteColor];
+    
+    self.navigationController.navigationItem.title=@"j";
+    self.navigationItem.rightBarButtonItem = rightButton;
     
     //设置item图片
     [self.tabBarItem setImage:[[UIImage imageNamed:@"tab_buddy_nor.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
@@ -79,8 +105,14 @@
     self.table.delegate=self;
     self.table.dataSource=self;
     
+    //set searchbar
+    [self.searchBar setPlaceholder:@"搜索"];
+    [self.searchBar setSearchBarStyle:UISearchBarStyleDefault];
     
-    NSLog(@"%f %f",self.table.frame.origin.x,self.table.frame.origin.y);
+    [self.searchDisplayController setActive:NO];
+    self.searchDisplayController.delegate=self;
+    self.searchDisplayController.searchResultsDataSource=self;
+    self.searchDisplayController.searchResultsDelegate=self;
 
 }
 
@@ -99,7 +131,7 @@
 }
 */
 
--(void)pullToRefresh
+-(void)ShowRightView
 {
     
 }
@@ -109,32 +141,62 @@
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 10;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    if(section==0)return 1;
+    else return 3;
 }
 
+//row大小
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.section==0)return 80;
+    else return 50;
+}
+
+//列表分区顶大小
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if(section==0)return 0;
+    else return 15;//如果为0，会被系统默认值代替
+}
+
+//列表分区底大小
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 15;//如果为0，会被系统默认值代替
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if(section==1)return [NSString stringWithUTF8String:"QQ好友"];
+    return nil;
+}
+
+/*
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;
+{
+    if(section==0)
+    {
+        return self.searchBar;
+    }
+    return nil;
+}
+*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"toolbar";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
+    if (cell == nil) {//如果cell是用storyboard创建（不足时自动返回复制品），这一段可以省略
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell.
     
+    //cell.backgroundColor=[UIColor clearColor];
     return cell;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    
-    return [NSString stringWithFormat:@"Section %i", section];
-    
-}
+
 
 
 
@@ -199,4 +261,42 @@
     
 }
 
+
+
+#pragma mark - UISearchDisplayDelegate
+
+- (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    [UIView animateWithDuration:0.2 animations:^
+     {
+         [self.refreshHeaderView Hide:YES];
+         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.table];
+         [self.navigationController setNavigationBarHidden:YES];//隐藏导航栏
+     }completion:^(BOOL finished)
+     {
+
+     }];
+    
+    controller.searchBar.showsCancelButton = YES;
+    for(UIView *subView in [[controller.searchBar.subviews objectAtIndex:0] subviews])
+    {
+        if([subView isKindOfClass:UIButton.class])
+        {
+            [(UIButton*)subView setTitle:@"取消" forState:UIControlStateNormal];
+        }
+    }
+}
+
+- (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
+{
+    [self.navigationController setNavigationBarHidden:NO];//显示导航栏
+    [self.refreshHeaderView Hide:NO];
+    [UIView animateWithDuration:0.2 animations:^
+     {
+
+     }completion:^(BOOL finished)
+     {
+        
+     }];
+}
 @end

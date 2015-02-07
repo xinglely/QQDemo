@@ -60,6 +60,8 @@
 		84B366E31A7E2FD100715F35 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B366E01A7E2FD100715F35 /* more.png */; };
 		84B366E41A7E2FD100715F35 /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B366E11A7E2FD100715F35 /* more@2x.png */; };
 		84B366E51A7E2FD100715F35 /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B366E11A7E2FD100715F35 /* more@2x.png */; };
+		84D48EBD1A8543CE00FA3E44 /* Contacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D48EBC1A8543CE00FA3E44 /* Contacts.storyboard */; };
+		84D48EBE1A8543CE00FA3E44 /* Contacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D48EBC1A8543CE00FA3E44 /* Contacts.storyboard */; };
 		9B4C96751A7BA4500048A02E /* ShareFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C96741A7BA4500048A02E /* ShareFunc.m */; };
 		9B4C96761A7BA4500048A02E /* ShareFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C96741A7BA4500048A02E /* ShareFunc.m */; };
 		9B4C96791A7BA8B00048A02E /* Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C96781A7BA8B00048A02E /* Log.m */; };
@@ -144,6 +146,7 @@
 		84AFCABD1A83F5FC00B4603B /* tab_recent_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_recent_press@2x.png"; sourceTree = "<group>"; };
 		84B366E01A7E2FD100715F35 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
 		84B366E11A7E2FD100715F35 /* more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more@2x.png"; sourceTree = "<group>"; };
+		84D48EBC1A8543CE00FA3E44 /* Contacts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Contacts.storyboard; sourceTree = "<group>"; };
 		9B4C96731A7BA4500048A02E /* ShareFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareFunc.h; sourceTree = "<group>"; };
 		9B4C96741A7BA4500048A02E /* ShareFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareFunc.m; sourceTree = "<group>"; };
 		9B4C96771A7BA8B00048A02E /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
@@ -226,6 +229,15 @@
 			path = AsyncSocket;
 			sourceTree = "<group>";
 		};
+		849F74C91A85FD2400D7B9AB /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				84AFCAAF1A83EB7A00B4603B /* UIContactsViewController.h */,
+				84AFCAB01A83EB7A00B4603B /* UIContactsViewController.m */,
+			);
+			name = Contact;
+			sourceTree = "<group>";
+		};
 		84A10B2D1A84FB1200260A30 /* refreshTable */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,8 +266,7 @@
 		84AFCAAE1A83EB6100B4603B /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				84AFCAAF1A83EB7A00B4603B /* UIContactsViewController.h */,
-				84AFCAB01A83EB7A00B4603B /* UIContactsViewController.m */,
+				849F74C91A85FD2400D7B9AB /* Contact */,
 				84AFCAB31A83EE0800B4603B /* UIHomeTab.h */,
 				84AFCAB41A83EE0800B4603B /* UIHomeTab.m */,
 			);
@@ -385,6 +396,7 @@
 				9BECBA6C1A7B8B1200AD3190 /* Main.storyboard */,
 				9BECBA721A7B8B1200AD3190 /* Images.xcassets */,
 				9BECBA611A7B8B1200AD3190 /* Supporting Files */,
+				84D48EBC1A8543CE00FA3E44 /* Contacts.storyboard */,
 			);
 			path = QQDemo;
 			sourceTree = "<group>";
@@ -503,6 +515,7 @@
 				84AFCAC01A83F5FC00B4603B /* tab_buddy_press@2x.png in Resources */,
 				84A10B3F1A84FB1200260A30 /* grayArrow.png in Resources */,
 				84B366E21A7E2FD100715F35 /* more.png in Resources */,
+				84D48EBD1A8543CE00FA3E44 /* Contacts.storyboard in Resources */,
 				9B4C968D1A7BEEF20048A02E /* icon.png in Resources */,
 				84A10B3B1A84FB1200260A30 /* blueArrow.png in Resources */,
 				84A10B431A84FB1200260A30 /* TableViewPull-Info.plist in Resources */,
@@ -539,6 +552,7 @@
 				9BECBA841A7B8B1200AD3190 /* InfoPlist.strings in Resources */,
 				84A10B481A84FB1200260A30 /* whiteArrow@2x.png in Resources */,
 				9B4C96901A7BEEF20048A02E /* icon@2x.png in Resources */,
+				84D48EBE1A8543CE00FA3E44 /* Contacts.storyboard in Resources */,
 				84A10B3E1A84FB1200260A30 /* blueArrow@2x.png in Resources */,
 				84A10B421A84FB1200260A30 /* grayArrow@2x.png in Resources */,
 				84A10B461A84FB1200260A30 /* whiteArrow.png in Resources */,
